@@ -1,0 +1,62 @@
+<!-- bloque de directivas de atributos -->
+
+<p [ngStyle]="{ color: 'tomato', fontWeight: 'bolder' }">Lista de elementos</p>
+
+<p [ngClass]="{ underline: true }">
+  Aqui vamos a iterar sobre una lista y mostrar varios elemetos
+</p>
+
+<p [ngClass]="['underline', 'big']">Aun no tienes elementos en la lista</p>
+
+<p [ngClass]="{ underline: false, big: true }">
+  Te recomedamos crear un elemnto
+</p>
+
+<!-- bloque de directivas estructurales -->
+<button type="button" (click)="cambiarCargando()">{{cargando? 'Terminar Carga': 'Iniciar Carga'}}</button>
+<!-- <p *ngIf="cargando">Cargando....</p> -->
+<ng-container *ngIf="!cargando; else templateEspera">
+    <p>Todo listo</p>
+</ng-container>
+<ng-template #templateEspera>
+    <p>Cargando...</p>
+    <p>Espere a que termine el proceso</p>
+</ng-template>
+
+
+<!-- bloque para explicar el uso de ngfor, si es par o impar -->
+<div class="producto" >
+    <div *ngFor="let listProduct of listaElementos; let i = index;let par = even" [ngStyle]="par ? { backgroundColor: 'blue', 'color':'white' }:{backgroundColor: 'green', 'color':'white'}">
+        <p>ID: {{i +1 }}</p>
+        <p>{{listProduct.nombre}} -- {{listProduct.precio}}</p>
+        <p>{{listProduct.desc}}</p>
+    </div>
+</div>
+
+
+<!-- bloque para entender ngSwitch -->
+<div [ngSwitch]="option">
+    <p *ngSwitchCase="1">Option 1</p>
+    <p *ngSwitchCase="2">Option 2</p>
+    <p *ngSwitchCase="3">Option 3</p>
+    <p *ngSwitchCase="4">Option 4</p>
+    <p *ngSwitchDefault> Ninguna opcion es valida</p>
+</div>
+<div>
+    <input type="radio" name="option" (click)="escogerOption(1)">Opcion 1
+    <input type="radio" name="option" (click)="escogerOption(2)">Opcion 2
+    <input type="radio" name="option" (click)="escogerOption(3)">Opcion 3
+    <input type="radio" name="option" (click)="escogerOption(4)">Opcion 4
+    <input type="radio" name="option" selected="selected" (click)="escogerOption(0)">Ocultar
+</div>
+
+<!-- Podemos concatenar directivas -->
+<!-- productos mayor a 10 -->
+<p>Productos mayor a 10</p>
+<div class="producto" *ngFor="let listProduct of listaElementos; let i = index;let par = even">
+    <div *ngIf="listProduct.precio > 10" [ngStyle]="par ? { backgroundColor: 'blue', 'color':'white' }:{backgroundColor: 'green', 'color':'white'}">
+        <p>ID: {{i +1 }}</p>
+        <p>{{listProduct.nombre}} -- {{listProduct.precio}}</p>
+        <p>{{listProduct.desc}}</p>
+    </div>
+</div>

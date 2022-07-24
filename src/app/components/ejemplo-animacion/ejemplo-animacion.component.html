@@ -1,0 +1,7 @@
+<div [@animacion]="state" class="caja">
+    <p>Ejemplo animacion angular {{state}}}</p>
+    <button  mat-raised-button color="info" (click)="cambiarStateActive()">{{state =='active'?'Desactivar': 'Activar'}}</button>
+    <button  mat-raised-button color="info" (click)="changeSize()">{{state =='original'?'Ampliar': 'Original'}}</button>
+    <button mat-raised-button color="primary" (click)="subir">subir caja</button>
+    <button  mat-raised-button color="warn"(click)="rotar">bajar caja</button>
+</div>

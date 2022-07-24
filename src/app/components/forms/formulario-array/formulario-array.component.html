@@ -1,0 +1,27 @@
+<div>
+    <form [formGroup]="form">
+
+        <h3>Datos en vivo:</h3>
+        <p>{{form.value | json}}</p>
+
+        <!-- campos de nombres y apellido -->
+        <input type="text" placeholder="nombre" formControlName="nombre" id="">
+        <input type="text" placeholder="apellido" formControlName="apellidos" id="">
+
+        <!-- array con agrupacion de tlfs -->
+        <div formArrayName="telefonos">
+            <!-- iteramos por cada uno de los telefonos presentes en la lista -->
+            <!-- [formGroupName]="i" toma el valos de i -->
+            <div *ngFor="let item of tlfFoms.controls; let i = index;"  [formGroupName]="i">
+                <h5>Telefono - {{i}}</h5>
+                <input type="text" placeholder="Prefijo" formControlName="prefijo" >
+                <input type="text" placeholder="Numero" formControlName="numero" >
+                <button (click)="removeTlf(i)">Eliminar tlf</button>
+            </div>
+
+            <!-- btn para agregar tlf -->
+            <button (click)="addTlfs()">Agregar tlf</button>
+
+        </div>
+    </form>
+</div>

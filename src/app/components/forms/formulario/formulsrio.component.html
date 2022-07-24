@@ -1,0 +1,32 @@
+<div>
+    <!-- formulario reactivo -->
+    <form [formGroup]="form">
+        <!-- Previsualizacion de los valores del formulario -->
+        <h2>Datos en vivo del formulario</h2>
+        <p>{{form.value | json}}</p>
+
+        <!-- campos del formulario -->
+        <mat-form-field>
+            <input matInput type="text" name="" id="" formControlName="nombre" placeholder="nombre">
+        </mat-form-field>
+        <mat-form-field>
+
+            <input matInput type="text" name="" id="" formControlName="apellido" placeholder="apellido">
+
+        </mat-form-field>
+        <mat-form-field>
+
+            <input matInput type="text" name="" id="" formControlName="email" placeholder="email">
+
+        </mat-form-field>
+        <mat-form-field>
+
+            <input matInput type="text" name="" id="" formControlName="telefono" placeholder="telefono">
+
+        </mat-form-field>
+        <mat-form-field>
+
+            <input matInput type="text" name="" id="" formControlName="direccion" placeholder="direccion">
+        </mat-form-field>
+    </form>
+</div>

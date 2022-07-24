@@ -1,0 +1,46 @@
+<div>
+    <h3>Datos en vivo</h3>
+    <p>{{form.value | json}}</p>
+    <form [formGroup]="form" (ngSubmit)="enviarFom()">
+        <input type="text" formControlName="nombre" placeholder="Nombre" name="" id="">
+        <div *ngIf="nombre?.errors?.required && nombre?.touched" [ngStyle]="{color: 'tomato'}">El campo es obligatorio</div>
+
+
+        <input type="text" formControlName="apellidos" placeholder="apellidos" name="" id="">
+
+
+        <input type="number" formControlName="edad" placeholder="Edad" name="" id="">
+        <div *ngIf="edad?.errors?.required && edad?.touched" [ngStyle]="{color: 'tomato'}">El campo es obligatorio</div>
+        <div *ngIf="edad?.errors?.min && edad?.touched" [ngStyle]="{color: 'tomato'}">
+            El campo no puede ser inferior a 18
+            NO puedes Registrarte con {{edad?.errors?.min |json}} anios
+        </div>
+        <div *ngIf="edad?.errors?.max && edad?.touched" [ngStyle]="{color: 'tomato'}">
+            El campo no puede ser superior a 99
+            NO puedes Registrarte con {{edad?.errors?.max |json}} anios
+        </div>
+
+        <input type="email" formControlName="email" placeholder="Email" name="" id="">
+        <div *ngIf="email?.errors?.required && email?.touched" [ngStyle]="{color: 'tomato'}">
+            El campo es Obligatorio
+        </div>
+        <div *ngIf="email?.errors?.email && email?.touched" [ngStyle]="{color: 'tomato'}">
+            El formato no es valido
+        </div>
+
+        <input type="password" formControlName="password" placeholder="Password" name="" id="">
+        <div *ngIf="password?.errors?.required && edad?.touched" [ngStyle]="{color: 'tomato'}">
+            El campo es Obligatorio
+        </div>
+        <div *ngIf="password?.errors?.pattern && password?.touched" [ngStyle]="{color: 'tomato'}">
+            El formato no es valido
+        </div>
+
+        <input type="checkbox" formControlName="acepta" name="" id="">
+        <div *ngIf="acepta?.errors?.requiredTrue && acepta?.touched" [ngStyle]="{color: 'tomato'}">
+          Debes aceptar los terminos
+        </div>
+
+        <button [disabled]="form.invalid" type="submit" >Enviar fomulario</button>
+    </form>
+</div>

@@ -1,0 +1,49 @@
+<h1>Ejemplos pipes nativos de Angular</h1>
+
+<!-- Fechas -->
+<h3>Pipes para fechas</h3>
+<p>Mi cumple es sin pipe {{dob}}</p>
+<p>Mi cumple es  con pipe date basico {{dob | date }}</p>
+<p>Mi cumple es  con pipe date basico con formato {{dob | date:'dd/MM/yyyy' }}</p>
+
+<p>Mi cumple es  con pipe date basico short/fulldate  {{dob | date:dateFormat }}</p>
+<button (click)="cambiarFormato()">Cambiar formato a {{!cambio?'Short':'Full'}}</button>
+
+
+<!-- pipe decimales -->
+<p>numero PI 5 decimales: {{numberPI |number:'.5-5'}}</p>
+<p>numero PI 3 decimales: {{numberPI |number:'.3-3'}}</p>
+<p>numero PI 2 enteros y 8 decimales: {{numberPI |number:'2.8-8'}}</p>
+
+<!-- Modena pipe -->
+<p>Pecio del carrito: {{precioCart | currency: 'EUR':true}}</p>
+<p>Pecio del carrito: {{precioCart | currency: 'USD'}}</p>
+<p>Pecio del carrito: {{precioCart | currency: 'EUR':true:'.3-3'}}</p>
+
+<!-- mayusculas y minusculas -->
+<hr>
+<h4>Welcome {{nombre | uppercase}}</h4>
+<h4>Welcome @{{nombre | lowercase}}</h4>
+
+<!-- combinacion e pipe -->
+<hr>
+<p>Mi cumple es  con pipe date basico short/fulldate Mayuscula {{dob | date:dateFormat |uppercase}}</p>
+<p>Mi cumple es  con pipe date basico short/fulldate Minuscula {{dob | date:dateFormat |lowercase}}</p>
+
+<!-- pipe personalizado -->
+<p>Resultado: {{2 | multiplica:15}}</p>
+
+<hr>
+
+<!-- calcula puntuacion pipe personalizado -->
+<p>{{jugador1 |calcularPuntuacion:'hola'}}</p>
+<p>{{jugador2 |calcularPuntuacion}}</p>
+
+<!-- json pipe -->
+<p>{{persona | json}}</p>
+
+<!-- procentaje -->
+<p>El porcentaje es: {{cantidad |percent:'2.2-2'}}</p>
+
+<!-- Slice -->
+<p>texto largo: {{textLargo |slice:0:10}}...</p>

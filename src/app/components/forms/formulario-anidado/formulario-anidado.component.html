@@ -1,0 +1,19 @@
+<div>
+
+    <form [formGroup]="form">
+        <h3>Datos en vivo</h3>
+        <p>{{form.value | json}}</p>
+
+        <h4>Telefono fijo</h4>
+        <div formGroupName="fijo">
+            <input placeholder="Prefijo" formControlName="prefijo" type="text">
+            <input placeholder="Numero" formControlName="numero" type="text">
+        </div>
+
+        <div formGroupName="movil">
+            <input placeholder="Prefijo" formControlName="prefijo" type="text">
+            <input placeholder="Numero" formControlName="numero" type="text">
+        </div>
+    </form>
+
+</div>
